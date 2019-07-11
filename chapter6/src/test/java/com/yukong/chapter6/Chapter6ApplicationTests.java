@@ -3,6 +3,7 @@ package com.yukong.chapter6;
 import com.yukong.chapter6.entity.TestEntity;
 import com.yukong.chapter6.entity.User;
 import com.yukong.chapter6.service.TestService;
+import com.yukong.chapter6.until.Result;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,8 +88,8 @@ public class Chapter6ApplicationTests {
 
     @Test
     public void selectList(){
-        testService.selectList();
-        //System.out.println("测试");
+        List<TestEntity> list = testService.selectList();
+        System.out.println(Result.ok(list));
     }
 
 }
