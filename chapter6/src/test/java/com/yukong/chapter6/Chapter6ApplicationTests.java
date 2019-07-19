@@ -2,6 +2,7 @@ package com.yukong.chapter6;
 
 import com.yukong.chapter6.entity.TestEntity;
 import com.yukong.chapter6.entity.User;
+import com.yukong.chapter6.redis.RedisServiceAction;
 import com.yukong.chapter6.service.TestService;
 import com.yukong.chapter6.until.Result;
 import org.junit.Test;
@@ -23,40 +24,26 @@ import java.util.List;
 public class Chapter6ApplicationTests {
 
     @Autowired
-    private RedisTemplate redisTemplate;
-
-    @Autowired
     private DataSource dataSource;
 
     @Autowired
     private TestService testService;
 
+    @Autowired
+    private RedisServiceAction redisServiceAction;
+
     @Test
     public void redisTest() {
          //redis存储数据
-        String key = "name";
-        redisTemplate.opsForValue().set(key, "yukong");
-         //获取数据
-        String value = (String) redisTemplate.opsForValue().get(key);
-        System.out.println("获取缓存中key为" + key + "的值为：" + value);
 
         User user = new User();
         user.setUsername("yukong");
         user.setSex(18);
         user.setId(1L);
         String userKey = "yukong";
-        redisTemplate.opsForValue().set(userKey, user);
-        User newUser = (User) redisTemplate.opsForValue().get(userKey);
-        System.out.println("获取缓存中key为" + userKey + "的值为：" + newUser);
-
-        TestEntity entity = new TestEntity();
-        entity.setName("测试名字");
-        entity.setPwd("123456");
-        entity.setSex(1);
-        String testName = "demo";
-        redisTemplate.opsForValue().set(testName,entity);
-        TestEntity newTset = (TestEntity) redisTemplate.opsForValue().get(testName);
-        System.out.println("取出的值key: "+testName+" value: "+newTset);
+        redisServiceAction.save(userKey,user,2L);
+        user = redisServiceAction.getEntity(userKey,User.class);
+        System.out.println("获取缓存中key为" + userKey + "的值为：" + user.toString());
     }
 
     @Test
@@ -81,9 +68,10 @@ public class Chapter6ApplicationTests {
             connection.close();
 
         String testKey = "dataTable";
-        redisTemplate.opsForValue().set(testKey,list);
-        Object a = redisTemplate.opsForValue().get(testKey);
-        System.out.println("key："+testKey+"value："+a);
+        redisServiceAction.save(testKey,list);
+        List<TestEntity> entityList = redisServiceAction.getList(testKey,TestEntity.class);
+
+        System.out.println("key："+testKey+"value："+entityList.toString());
     }
 
     @Test

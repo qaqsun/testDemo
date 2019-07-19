@@ -1,5 +1,6 @@
 package com.yukong.chapter6.config;
 
+import io.swagger.annotations.Api;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.request.async.DeferredResult;
@@ -31,13 +32,13 @@ public class SwaggerConfig {
                 .pathMapping("/")
                 .select()
                 .build()
-                .apiInfo(apiInfo());
-                //.apiInfo(apiInfo())
-                //.select()
-                ////swagger要扫描的包路径
-                //.apis(RequestHandlerSelectors.basePackage("com.yukong.chapter6.controller"))
-                //.paths(PathSelectors.any())
-                //.build();
+                //.apiInfo(apiInfo());
+                .apiInfo(apiInfo())
+                .select()
+                //swagger要扫描的包路径(包含Api注解)
+                .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
+                .paths(PathSelectors.any())
+                .build();
     }
 
     private ApiInfo apiInfo(){
