@@ -4,12 +4,12 @@ import com.yukong.chapter6.entity.TestEntity;
 import com.yukong.chapter6.entity.User;
 import com.yukong.chapter6.redis.RedisServiceAction;
 import com.yukong.chapter6.service.TestService;
-import com.yukong.chapter6.until.Result;
+import com.yukong.chapter6.untils.Result;
+import lombok.AllArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.sql.DataSource;
@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -67,11 +68,14 @@ public class Chapter6ApplicationTests {
         if (connection != null)
             connection.close();
 
-        String testKey = "dataTable";
-        redisServiceAction.save(testKey,list);
-        List<TestEntity> entityList = redisServiceAction.getList(testKey,TestEntity.class);
+        Long count = list.parallelStream().filter(x->x.getId() >0).count();
+        System.out.println(count);
 
-        System.out.println("key："+testKey+"value："+entityList.toString());
+        //String testKey = "dataTable";
+        //redisServiceAction.save(testKey,list);
+        //List<TestEntity> entityList = redisServiceAction.getList(testKey,TestEntity.class);
+        //
+        //System.out.println("key："+testKey+"value："+entityList.toString());
     }
 
     @Test

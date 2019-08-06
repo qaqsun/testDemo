@@ -1,45 +1,46 @@
 server:
   port: 8088
+  servlet:
+    context-path: /chapter6
 
 spring:
   profiles:
     active: dev
-#  swagger:
-#    # 是否启用swagger，默认：true
-#    enabled: true
-#    title: swagger测试
-#    # 关闭 JSR
-#    validator-plugin: false
-#    version: 1.0.0
-#    # swagger扫描的基础包，默认：全扫描
-#    base-package:
-#    # 需要处理的基础URL规则，默认：/**
-#    base-path: /**
-#    contact:
-#      email: 13101124369@163.com
-#      name: sundog
-#      url: www.baidu.com
-#    # 描述信息
-#    description: 测试
-#    globalOperationParameters:
-#      - description: 'Token信息,必填项'
-#        # 指定参数类型
-#        modelRef: 'string'
-#        # 参数名
-#        name: 'token'
-#        # 指定参数存放位置,参考ParamType:(header,query,path,body,form)
-#        parameter-type: 'header'
-#        # 指定参数是否必传，默认false
-#        required: false
-#    # 分组
-#    groups:
-#      test-Api:
+  swagger:
+    # 是否启用swagger，默认：true
+    enabled: true
+    title: swagger测试
+    # 关闭 JSR
+    validator-plugin: false
+    version: 1.0.0
+    # swagger扫描的基础包，默认：全扫描
+    base-package:
+    # 需要处理的基础URL规则，默认：/**
+    base-path: /**
+    contact:
+      email: 13101124369@163.com
+      name: sundog
+      url: www.baidu.com
+    # 描述信息
+    description: 测试
+    globalOperationParameters:
+      - description: 'Token信息,必填项'
+        # 指定参数类型
+        modelRef: 'string'
+        # 参数名
+        name: 'token'
+        # 指定参数存放位置,参考ParamType:(header,query,path,body,form)
+        parameter-type: 'header'
+        # 指定参数是否必传，默认false
+        required: false
+    # 分组
+    groups:
+      test-Api:
+        basePackage: com.yukong.chapter6.controller
+#      生产接口:
 #        basePackage: com.yukong.chapter6.controller
-##      生产接口:
-##        basePackage: com.yukong.chapter6.controller
-#    # 文档验证
+    # 文档验证
 #    security:
-#      # 是否开启
 #      filter-plugin: true
 #      username: sundog
 #      password: 123456

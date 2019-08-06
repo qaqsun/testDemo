@@ -1,4 +1,4 @@
-package com.yukong.chapter6.until;
+package com.yukong.chapter6.untils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.yukong.chapter6.common.RequestStatus;
