@@ -1,4 +1,4 @@
-package com.yukong.chapter6.sys.service.imlp;
+package com.yukong.chapter6.service.impl;
 
 /**
  * @author qinjunjie

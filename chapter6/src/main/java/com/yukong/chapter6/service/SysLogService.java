@@ -1,4 +1,4 @@
-package com.yukong.chapter6.sys.service;
+package com.yukong.chapter6.service;
 
 /**
  * @author qinjunjie
