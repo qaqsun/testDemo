@@ -15,5 +15,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD,ElementType.TYPE})
 public @interface Log {
+    //详情
     String value() default "";
+    //备注
+    String mark() default "";
 }

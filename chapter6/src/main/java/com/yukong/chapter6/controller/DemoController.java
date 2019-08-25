@@ -25,7 +25,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/demo/")
-@Api(tags = "测试接口")
+@Api(tags = "demo接口")
 public class DemoController {
 
     @Value("${demo-data.name}")
