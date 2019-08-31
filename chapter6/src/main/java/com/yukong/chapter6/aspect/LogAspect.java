@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.yukong.chapter6.annotation.Log;
 import com.yukong.chapter6.entity.SysLogEntity;
 import com.yukong.chapter6.service.SysLogService;
-import com.yukong.chapter6.untils.IPUntils;
+import com.yukong.chapter6.utils.IPUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -77,7 +77,7 @@ public class LogAspect {
 
         //获取request
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        logEntity.setIp(IPUntils.getIpAddr(request));
+        logEntity.setIp(IPUtils.getIpAddr(request));
         logEntity.setCreateTime(new Date());
         // 保存记录
         sysLogService.save(logEntity);

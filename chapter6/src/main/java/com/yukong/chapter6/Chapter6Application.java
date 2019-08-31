@@ -4,6 +4,10 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 启动项
+ * @author sundog
+ */
 @SpringBootApplication(scanBasePackages = {"com.yukong.chapter6"})
 @MapperScan(basePackages = "com.yukong.chapter6.dao")
 public class Chapter6Application {

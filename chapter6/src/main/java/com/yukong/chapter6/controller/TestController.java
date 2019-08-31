@@ -2,7 +2,7 @@ package com.yukong.chapter6.controller;
 
 import com.yukong.chapter6.annotation.Log;
 import com.yukong.chapter6.service.SysMenuService;
-import com.yukong.chapter6.untils.Result;
+import com.yukong.chapter6.utils.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

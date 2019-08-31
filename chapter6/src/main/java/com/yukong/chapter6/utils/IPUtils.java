@@ -1,4 +1,4 @@
-package com.yukong.chapter6.untils;
+package com.yukong.chapter6.utils;
 
 import com.alibaba.druid.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -15,9 +15,9 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2019/7/2017:01
  */
 @Slf4j
-public class IPUntils {
+public class IPUtils {
 
-    private static Logger logger = LoggerFactory.getLogger(IPUntils.class);
+    private static Logger logger = LoggerFactory.getLogger(IPUtils.class);
 
     public static String getIpAddr(HttpServletRequest request) {
         String ip = null;
